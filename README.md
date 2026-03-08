@@ -1,6 +1,7 @@
+
 # gdc-vtt-capture
 
-Fetch and merge segmented GDC caption `.vtt` chunks into a single text file.
+GDC-vtt-capture is a Python script that helps you download captions from a GDC talk video. It will fetch and merge segmented GDC caption `.vtt` chunks into a single text file. You can use other AI tools to summarize the talk by using this captions file.
 
 ## How To Use
 
@@ -8,6 +9,13 @@ Fetch and merge segmented GDC caption `.vtt` chunks into a single text file.
 2. Play the video, then open browser DevTools -> Network.
 3. Find any `.vtt` request and copy its URL.
 4. Run this script with that URL as the input parameter.
+
+```bash
+python3 capture_gdc_vtt.py "<vtt_segment_url>"
+```
+
+An example can be found in the repo, check `run_vtt_capture_example.sh` file.
+
 
 ## How It Works
 
@@ -18,35 +26,10 @@ Fetch and merge segmented GDC caption `.vtt` chunks into a single text file.
 
 ## Environment Setup
 
-Requires Python 3.
+The tools is lightweighted, what you need are
 
-```bash
-python3 -m venv .venv
-source .venv/bin/activate
-pip install -r requirements.txt
-```
-
-## Usage
-
-```bash
-python3 capture_gdc_vtt.py "<vtt_segment_url>"
-```
-
-Example:
-
-```bash
-python3 capture_gdc_vtt.py \
-  "https://.../index_4_0_33.vtt" \
-  --output captions.txt \
-  --max-range 1000 \
-  --max-404 3
-```
-
-## Optional: Run Batch Script on macOS
-
-```bash
-./run_vtt_capture_example.sh
-```
+- Python 3
+- requests 
 
 ## License
 
